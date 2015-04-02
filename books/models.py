@@ -9,11 +9,11 @@ class User(models.Model):
 
 class Book(models.Model):
 	isbn = models.CharField(max_length=10, unique=True)
-	eisbn = models.CharField(max_length=13, unique=True)
+	eisbn = models.CharField(max_length=13, blank=True)
 	title = models.CharField(max_length=200)
 	author = models.CharField(max_length=200)
-	edition = models.CharField(max_length=200)
-	cover = models.ImageField(upload_to='covers')
+	edition = models.CharField(max_length=200, blank=True)
+	cover = models.ImageField(upload_to='covers', blank=True)
 	def __unicode__(self):
 		return u'[%s] "%s" by %s' % (self.isbn, self.title, self.author,)
 
