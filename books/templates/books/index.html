@@ -1,0 +1,9 @@
+{% if book_list %}
+    <ul>
+    {% for book in book_list %}
+        <li><a href="/books/isbn?{{ book.isbn }}/">{{ book }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No books are available.</p>
+{% endif %}
