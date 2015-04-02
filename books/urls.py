@@ -6,6 +6,6 @@ urlpatterns = [
     # ex: /books/
     url(r'^$', views.index, name='index'),
     # ex: /books/list/
-    url(r'^list/$', views.list, name='list'),
+    #url(r'^list/$', views.list, name='list'),
 ]
 
