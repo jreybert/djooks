@@ -5,7 +5,7 @@ class User(models.Model):
 	first_name = models.CharField(max_length=200)
 	last_name = models.CharField(max_length=200)
 	def __unicode__(self):
-		return "%s %s" % (self.first_name, self.last_name,)
+		return u"%s %s" % (self.first_name, self.last_name,)
 
 class Book(models.Model):
 	isbn = models.CharField(max_length=10, unique=True)
@@ -15,7 +15,7 @@ class Book(models.Model):
 	edition = models.CharField(max_length=200)
 	cover = models.ImageField(upload_to='covers')
 	def __unicode__(self):
-		return '[%s] "%s" by %s' % (self.isbn, self.title, self.author,)
+		return u'[%s] "%s" by %s' % (self.isbn, self.title, self.author,)
 
 	@classmethod
 	def create(cls, isbn):
@@ -28,12 +28,12 @@ class Book_copy(models.Model):
 	owner = models.ForeignKey(User)
 	purchase_date = models.DateTimeField('date published')
 	def __unicode__(self):
-		return '%s borrowed by %s' % (self.book, self.owner,)
+		return u'%s borrowed by %s' % (self.book, self.owner,)
 
 class Borrowing(models.Model):
 	book_copy = models.ForeignKey(Book_copy)
 	borrower = models.ForeignKey(User)
 	borrow_date = models.DateTimeField('date published')
 	def __unicode__(self):
-		return '%s loaned by %s since %s' % (self.book_copy.book, self.borrower, self.borrow_date,)
+		return u'%s loaned by %s since %s' % (self.book_copy.book, self.borrower, self.borrow_date,)
 
