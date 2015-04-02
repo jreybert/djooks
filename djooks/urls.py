@@ -6,5 +6,6 @@ urlpatterns = [
     # url(r'^$', 'djooks.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
+    url(r'^books/', include('books.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
