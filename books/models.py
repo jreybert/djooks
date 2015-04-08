@@ -7,6 +7,13 @@ class User(models.Model):
 	def __unicode__(self):
 		return u"%s %s" % (self.first_name, self.last_name,)
 
+class BookManager(models.Manager):
+	def create_book(self, isbn):
+		# get ISBN from amazon
+		book = self.create(isbn=isbn)
+		# do something with the book
+		return book
+
 class Book(models.Model):
 	isbn = models.CharField(max_length=10, unique=True)
 	eisbn = models.CharField(max_length=13, blank=True)
@@ -17,14 +24,11 @@ class Book(models.Model):
 	def __unicode__(self):
 		return u'[%s] "%s" by %s' % (self.isbn, self.title, self.author,)
 
-	@classmethod
-	def create(cls, isbn):
-		book = cls(isbn=isbn)
-		return book
+	objects = BookManager()
 
 
 class Book_copy(models.Model):
-	book = models.ForeignKey(Book) 
+	book = models.ForeignKey(Book)
 	owner = models.ForeignKey(User)
 	purchase_date = models.DateTimeField('date published')
 	def __unicode__(self):
