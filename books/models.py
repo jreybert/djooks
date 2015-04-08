@@ -1,5 +1,7 @@
 from django.db import models
 
+import isbn_search
+
 class User(models.Model):
 	user_id = models.AutoField(primary_key=True)
 	first_name = models.CharField(max_length=200)
@@ -10,8 +12,16 @@ class User(models.Model):
 class BookManager(models.Manager):
 	def create_book(self, isbn):
 		# get ISBN from amazon
-		book = self.create(isbn=isbn)
-		# do something with the book
+		product = isbn_search.search_isbn(isbn)
+		if product is None:
+			return None
+		book = self.create(
+				isbn    = product.isbn,
+				eisbn   = product.eisbn,
+				author  = product.author,
+				title   = product.title,
+				edition = product.edition
+				)
 		return book
 
 class Book(models.Model):
