@@ -1,0 +1,3 @@
+[submodule "subdjooks"]
+	path = subdjooks
+	url = https://github.com/jreybert/djooks
