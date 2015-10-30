@@ -51,22 +51,19 @@ def search_amazon(isbn):
 def search_isbn(isbn):
 	return search_amazon(isbn)
 
-def xstr(s):
-	return '' if s is None else s
-
 class ISBN_product(object):
 	"""
 	A wrapper class for object found
 	"""
 
 	def __init__(self, amazon_prod):
-		self.isbn             = xstr(amazon_prod.isbn)
-		self.eisbn            = xstr(amazon_prod.eisbn)
-		self.title            = xstr(amazon_prod.title)
-		self.author           = xstr(amazon_prod.author)
-		self.edition          = xstr(amazon_prod.edition)
-		self.publication_date = xstr(amazon_prod.publication_date)
-		self.release_date     = xstr(amazon_prod.release_date)
-		self.cover_url        = xstr(amazon_prod.medium_image_url)
+		self.isbn             = amazon_prod.isbn
+		self.eisbn            = amazon_prod.eisbn
+		self.title            = amazon_prod.title
+		self.author           = amazon_prod.author
+		self.edition          = amazon_prod.edition
+		self.publication_date = amazon_prod.publication_date
+		self.release_date     = amazon_prod.release_date
+		self.cover_url        = amazon_prod.medium_image_url
 
 
