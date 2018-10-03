@@ -9,7 +9,7 @@ class User(models.Model):
 	def __unicode__(self):
 		return u"%s %s" % (self.first_name, self.last_name,)
 
-class BookManager(models.Manager):
+class BookManager(~/models.Manager):
 	def create_book(self, isbn):
 		# get ISBN from amazon
 		product = isbn_search.search_isbn(isbn)
